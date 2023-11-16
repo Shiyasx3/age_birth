@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        /* CSS for styling the form */
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            background-color: rgb(7, 2, 11);
+        }
+
+        .good {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .col {
+            width: 500px;
+            height: 270px;
+            background-color: white;
+            border-radius: 20px;
+        }
+
+        .h {
+            display: flex;
+            justify-content: center;
+            font-size: 40px;
+            
+        }
+
+        .css2 {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+
+        input {
+            width: 140px;
+            height: 30px;
+        }
+
+        .h8 {
+            background-color: blue;
+            color: aliceblue;
+            height: 30px;
+            width: 350px;
+            border-radius: 5px;
+            border: solid 0px;
+            font-weight: 700;
+            margin-top: 50px;
+            margin-left: 75px;
+        }
+
+        .js {
+            margin-left: 68px;
+            margin-top: 10px;
+            font-size: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <div class="good">
+        <div class="col">
+            <h1 class="h">Age Calculator</h1>
+            <div class="css2">
+                <div class="h7" name="d1">
+                    <label>Date <br></label>
+                    <input type="number" id="day">
+                </div>
+                <div class="h7" name="m1">
+                    <label>Month <br></label>
+                    <input type="number" id="month">
+                </div>
+                <div class="h7" name="y1">
+                    <label>year <br></label>
+                    <input type="number" id="year">
+                </div>
+            </div>
+            <div class="submit" type="submit">
+                <button class="h8" onclick="calculateAge()">Submit</button>
+            </div>
+            <br>
+
+            <div class="js" id="age"></div>
+        </div>
+    </div>
+
+    <script>
+        function calculateAge() {
+            let d1 = parseInt(document.getElementById("day").value);
+            let m1 = parseInt(document.getElementById("month").value);
+            let y1 = parseInt(document.getElementById("year").value);
+
+            let currentDate = new Date();
+            let d2 = currentDate.getDate();
+            let m2 = 1 + currentDate.getMonth();
+            let y2 = currentDate.getFullYear();
+
+            if (d1 > d2) {
+                m2 -= 1;
+                d2 += month[m2 - 1];
+            }
+
+            if (m1 > m2) {
+                y2 -= 1;
+                m2 += 12;
+            }
+
+            let d = d2 - d1;
+            let m = m2 - m1;
+            let y = y2 - y1;
+
+            document.getElementById("age").innerHTML = "Your age is " + y + " years " + m + " months " + d + " days";
+        }
+    </script>
+
+</body>
+
+</html>
